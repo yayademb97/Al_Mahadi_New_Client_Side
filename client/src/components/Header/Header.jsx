@@ -59,7 +59,7 @@ const Header = () => {
                 <span className="badge">2</span>
               </span>
               <span>
-                <motion.img whileTap={{ scale: 1.2 }} src={userIcon} alt="" />
+                <motion.img whileHover={{ scale: 1.2 }} src={userIcon} alt="" />
               </span>
             </div>
 
