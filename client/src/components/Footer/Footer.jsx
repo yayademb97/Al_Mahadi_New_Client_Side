@@ -12,7 +12,7 @@ const Footer = () => {
   return <footer className="footer">
     <Container>
       <Row>
-        <Col lg="4">
+        <Col lg="4" className="mb-4" md="6">
             <div className="logo">
               <div className="logo__text">
                 <h1 className="text-white">Al Mahadi</h1>
@@ -25,7 +25,7 @@ const Footer = () => {
                 Profitez d’une expérience fluide et d’un service optimisé.
               </p>
         </Col>
-        <Col lg="3">
+        <Col lg="3" md="3" className="mb-4">
             <div className="footer__quick-links">
               <h4 className="quick__links-title">Accès Catégories</h4>
               <ListGroup>
@@ -47,7 +47,7 @@ const Footer = () => {
               </ListGroup>
             </div>
         </Col>
-        <Col lg="2">
+        <Col lg="2" md="3" className="mb-4">
         <div className="footer__quick-links">
               <h4 className="quick__links-title">Liens Utiles</h4>
               <ListGroup>
@@ -69,7 +69,7 @@ const Footer = () => {
               </ListGroup>
             </div>
         </Col>
-        <Col lg="3">
+        <Col lg="3" md="4">
         <div className="footer__quick-links">
               <h4 className="quick__links-title">Contact</h4>
               <ListGroup className="footer__contact">

@@ -1,6 +1,5 @@
 import React from 'react'
 import "./services.css"
-import ServiceData from "../assets/data/serviceData"
 import { Container, Col, Row } from 'reactstrap'
 import { motion } from 'framer-motion'
 import serviceData from '../assets/data/serviceData'

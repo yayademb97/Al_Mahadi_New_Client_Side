@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import "./header.css"
 import { motion } from 'framer-motion'
@@ -24,19 +24,43 @@ const nav__links = [
 ]
 
 const Header = () => {
+
+  const headerRef = useRef(null)
+
+  const menuRef = useRef(null)
+
+  const stickyHeaderFun = () => {
+    window.addEventListener('scroll', () => {
+      if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        headerRef.current.classList.add('sticky__hearder')
+      } else {
+        headerRef.current.classList.remove('sticky__hearder')
+      }
+    })
+  }
+
+  useEffect(() => {
+    stickyHeaderFun()
+
+    return () => window.removeEventListener('scroll', stickyHeaderFun)
+  }, [])
+
+
+  const menuToggle = () => menuRef.current.classList.toggle('active__menu')
+
   return (
-    <header className="header">
+    <header className="header" ref={headerRef}>
       <Container>
         <Row>
           <div className="nav__wrapper">
             <div className="logo">
               <img src={logo} alt="logo" />
               <div className="logo__text">
-                <h1>Al Mahadi</h1>
+                <h1>AlMahadi</h1>
               </div>
             </div>
 
-            <div className="navigation">
+            <div className="navigation" ref={menuRef} onClick={menuToggle}>
               <ul className="menu">
                 {
                   nav__links.map((link, index) => (
@@ -52,22 +76,23 @@ const Header = () => {
 
               <span className="fav__icon">
                 <i class="ri-heart-line"></i>
-                <span className="badge">2</span>
+                <span className="badge">0</span>
               </span>
               <span className="cart__icon">
                 <i class="ri-shopping-bag-line"></i>
-                <span className="badge">2</span>
+                <span className="badge">0</span>
               </span>
               <span>
                 <motion.img whileHover={{ scale: 1.2 }} src={userIcon} alt="" />
               </span>
+                <div className="mobile__menu">
+                    <span onClick={menuToggle}>
+                      <i class="ri-menu-line"></i>
+                    </span>
+              </div>
             </div>
 
-            <div className="mobile__menu">
-              <span>
-                <i class="ri-menu-line"></i>
-              </span>
-            </div>
+            
           </div>
         </Row>
       </Container>
