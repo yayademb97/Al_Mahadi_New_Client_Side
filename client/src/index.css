@@ -69,6 +69,15 @@ section{
   font-weight: 600;
 }
 
+.Toastify__toast-container {
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  z-index: 9999 !important;
+}
+
 @media only screen and (max-width: 768px) {
   section {
     padding: 40px 0px;
