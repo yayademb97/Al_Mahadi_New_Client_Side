@@ -21,6 +21,7 @@ const ProductCard = ({ item }) => {
 
 
     toast.success("✅✅ Produit ajouté avec succès ✅✅")
+    // console.log("✅✅ Produit ajouté avec succès ✅✅")
   }
 
   return (

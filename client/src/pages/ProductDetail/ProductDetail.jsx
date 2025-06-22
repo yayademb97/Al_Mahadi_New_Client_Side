@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Container, Row, Col } from "reactstrap";
 
@@ -10,7 +10,7 @@ import "../../style/product-details.css"
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../redux/slices/cartSlice";
-import { toast } from "react-toastify";
+import { toast } from 'react-toastify';
 
 const ProductDetail = () => {
 
@@ -42,6 +42,18 @@ const ProductDetail = () => {
     const reviewUserName = reviewUser.current.value
     const reviewUserMsg  = reviewMsg.current.value
 
+
+    // console.log(reviewUserName, reviewUserMsg, rating)
+
+    const reviewObj = {
+      userName: reviewUserName,
+      text: reviewUserMsg,
+      rating 
+    }
+
+    console.log(reviewObj)
+    toast.success("Merci pour votre avis ! Il a bien été enregistré")
+
   }
 
   const addToCart = () => {
@@ -51,8 +63,15 @@ const ProductDetail = () => {
       productName,
       price,
 
-    }))
+    })
+    
+  )
+  toast.success("✅✅ Produit ajouté avec succès ✅✅")
   }
+
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, [product])
 
   return (
     <Helmet title={productName}>
@@ -137,25 +156,26 @@ const ProductDetail = () => {
                                         <h4>Partagez Votre Expérience</h4>
                                           <form action="" onSubmit={submitHandler}>
                                             <div className="form__group">
-                                              <input type="text" placeholder="Entrez Votre Nom" ref={reviewUser} />
+                                              <input type="text" placeholder="Entrez Votre Nom" ref={reviewUser} required />
                                             </div>
 
-                                            <div className="form__group d-flex align-items-center gap-5">
-                                              <span onClick={() => setRating(1)}>1<i class="ri-star-s-fill"></i></span>
-                                              <span onClick={() => setRating(2)}>2<i class="ri-star-s-fill"></i></span>
-                                              <span onClick={() => setRating(3)}>3<i class="ri-star-s-fill"></i></span>
-                                              <span onClick={() => setRating(4)}>4<i class="ri-star-s-fill"></i></span>
-                                              <span onClick={() => setRating(5)}>5<i class="ri-star-s-fill"></i></span>
+                                            <div className="form__group d-flex align-items-center gap-5 rating__group">
+                                              <motion.span whileTap={{ scale: 1.2 }} onClick={() => setRating(1)}>1<i class="ri-star-s-fill"></i></motion.span>
+                                              <motion.span whileTap={{ scale: 1.2 }} onClick={() => setRating(2)}>2<i class="ri-star-s-fill"></i></motion.span>
+                                              <motion.span whileTap={{ scale: 1.2 }} onClick={() => setRating(3)}>3<i class="ri-star-s-fill"></i></motion.span>
+                                              <motion.span whileTap={{ scale: 1.2 }} onClick={() => setRating(4)}>4<i class="ri-star-s-fill"></i></motion.span>
+                                              <motion.span whileTap={{ scale: 1.2 }} onClick={() => setRating(5)}>5<i class="ri-star-s-fill"></i></motion.span>
                                             </div>
 
                                             <div className="form__group">
                                               <textarea
                                                 ref={reviewMsg}
+                                                required
                                                 rows={4}
                                                 type="text" placeholder="Que penses-tu de cet article ?" />
                                             </div>
 
-                                            <button type="submit" className="buy__btn">Soumettre</button>
+                                            <motion.button whileTap={{ scale: 1.2 }} type="submit" className="buy__btn">Soumettre</motion.button>
                                           </form>
                                       </div>
                                     </div>

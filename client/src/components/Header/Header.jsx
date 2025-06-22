@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import "./header.css"
 import { motion } from 'framer-motion'
 
@@ -26,6 +26,8 @@ const nav__links = [
 
 const Header = () => {
 
+  const navigate = useNavigate()
+
   const headerRef = useRef(null)
 
   const totalQuantity = useSelector(state => state.cart.totalQuantity)
@@ -50,6 +52,10 @@ const Header = () => {
 
 
   const menuToggle = () => menuRef.current.classList.toggle('active__menu')
+
+  const navigateToCart = () => {
+    navigate("/cart")
+  }
 
   return (
     <header className="header" ref={headerRef}>
@@ -83,7 +89,7 @@ const Header = () => {
               </span>
               <span className="cart__icon">
                 <i class="ri-shopping-bag-line"></i>
-                <span className="badge">{totalQuantity}</span>
+                <span className="badge" onClick={navigateToCart}>{totalQuantity}</span>
               </span>
               <span>
                 <motion.img whileHover={{ scale: 1.2 }} src={userIcon} alt="" />

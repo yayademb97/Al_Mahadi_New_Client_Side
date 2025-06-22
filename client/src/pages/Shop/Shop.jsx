@@ -67,7 +67,7 @@ const Shop = () => {
       <section>
         <Container>
           <Row>
-            <Col lg="3" md="4">
+            <Col lg="3" md="6">
               <div className="filter__widget">
                 <select onChange={handlerFilter}>
                   <option>Filtrer Par Catégorie</option>
@@ -79,8 +79,8 @@ const Shop = () => {
                 </select>
               </div>
             </Col>
-            <Col lg="3" md="3">
-              <div className="filter__widget">
+            <Col lg="3" md="6">
+              <div className="filter__widget text-end">
                 <select>
                   <option>Trier Par</option>
                   <option value="ascending">Du moins cher au plus cher</option>
@@ -88,7 +88,7 @@ const Shop = () => {
                 </select>
               </div>
             </Col>
-            <Col lg="6" md="6">
+            <Col lg="6" md="12" className="text-end">
               <div className="search__box">
                   <input type="text" placeholder="Trouver un produit..." onChange={handleSearch} />
                   <span>
